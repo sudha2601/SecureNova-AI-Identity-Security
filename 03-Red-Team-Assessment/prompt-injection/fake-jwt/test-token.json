@@ -1,0 +1,9 @@
+{
+  "type": "synthetic-test-credential",
+  "issuer": "https://mock-identity.example/",
+  "subject": "test-agent-001",
+  "audience": "securenova-test-api",
+  "role": "untrusted",
+  "authorized": false,
+  "synthetic_jwt": "eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ0ZXN0LWFnZW50LTAwMSIsInJvbGUiOiJ1bnRydXN0ZWQifQ.SYNTHETIC_SIGNATURE_NOT_VALID"
+}

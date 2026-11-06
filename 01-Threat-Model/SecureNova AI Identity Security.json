@@ -1,0 +1,3106 @@
+{
+  "summary": {
+    "title": "SecureNova AI Identity Security",
+    "owner": "Security Architecture Team",
+    "description": "Proposed logical architecture for an AI-powered application using Auth0, AI agents, an external LLM, RAG, MCP and protected internal APIs.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Capstone Project Team"
+      }
+    ],
+    "diagrams": [
+      {
+        "cells": [
+          {
+            "position": {
+              "x": 55,
+              "y": 235
+            },
+            "size": {
+              "width": 170,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Customer / Human User"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "8fae508c-fcc4-455f-9c1e-9bdfa9039f22"
+                },
+                {
+                  "group": "right",
+                  "id": "4a4c1a2e-e13b-40ff-8b2a-8ca6a665b078"
+                },
+                {
+                  "group": "bottom",
+                  "id": "bb1acbd1-f530-47df-9814-b925a02fefb8"
+                },
+                {
+                  "group": "left",
+                  "id": "e2af113e-0620-452c-b14a-234e4b63db24"
+                }
+              ]
+            },
+            "id": "08d93d6b-b89f-42e0-ba9f-125c1269e9b1",
+            "data": {
+              "name": "Customer / Human User",
+              "description": "External customer initiating authentication and chat requests.",
+              "type": "tm.Actor",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 420,
+              "y": 120
+            },
+            "size": {
+              "width": 190,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Auth0 Identity Provider"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "70fd1158-9262-4a6c-9860-43ebb05093fe"
+                },
+                {
+                  "group": "right",
+                  "id": "2e59e09f-18a6-409f-be5d-784ee05ef935"
+                },
+                {
+                  "group": "bottom",
+                  "id": "fdf5a2fa-44e2-4754-9015-19f5090945e5"
+                },
+                {
+                  "group": "left",
+                  "id": "edecf6c0-767d-4059-88c3-dc2872d62012"
+                }
+              ]
+            },
+            "id": "fce6c280-f656-4278-a0f1-ab98916300da",
+            "data": {
+              "name": "Auth0 Identity Provider",
+              "description": "OIDC identity provider that authenticates users and issues access tokens.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": true
+            }
+          },
+          {
+            "position": {
+              "x": 390,
+              "y": 270
+            },
+            "size": {
+              "width": 210,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "AI Application / Orchestrator"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 3,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "5afcbf5e-cf5c-42f0-82a1-61863e99b8bb"
+                },
+                {
+                  "group": "right",
+                  "id": "8aecebc3-5200-454d-9bab-1beba41a1d9a"
+                },
+                {
+                  "group": "bottom",
+                  "id": "e7a17902-42b6-46fd-934d-db3c2a665f52"
+                },
+                {
+                  "group": "left",
+                  "id": "747cd1bd-106a-482b-938d-08b61e0963ef"
+                }
+              ]
+            },
+            "id": "91100652-6092-48da-9ef2-1bc884eaa28f",
+            "data": {
+              "name": "AI Application / Orchestrator",
+              "description": "Validates incoming requests and coordinates AI agent execution.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 1010,
+              "y": 225
+            },
+            "size": {
+              "width": 180,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "AI Agent"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 4,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "d7b04735-090d-4bb4-8677-60d28cb93b59"
+                },
+                {
+                  "group": "right",
+                  "id": "435bdc59-3ce5-417a-ac18-1054b3640d05"
+                },
+                {
+                  "group": "bottom",
+                  "id": "0cef94e9-3519-47df-92aa-a21d21a134a8"
+                },
+                {
+                  "group": "left",
+                  "id": "9de6f81f-d5c6-41a4-9c73-eeda576c3e32"
+                }
+              ]
+            },
+            "id": "16f72667-64f6-4680-8b03-3c0420c31e9d",
+            "data": {
+              "name": "AI Agent",
+              "description": "Executes model and tool workflows using a scoped service identity.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "9a5e7c82-570b-4492-a77a-07836db53a54",
+                  "title": "AI Agent Identity Spoofing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "An attacker may steal or forge AI agent credentials and impersonate the legitimate AI agent. This could allow unauthorized access to the MCP Server and execution of tools using the agent's identity.",
+                  "mitigation": "Validate signed authentication tokens, verify issuer and audience claims, use short-lived agent credentials, enforce agent identity verification at the MCP Server, and apply least-privilege permissions.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "20"
+                }
+              ],
+              "hasOpenThreats": true,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false,
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 1530,
+              "y": 210
+            },
+            "size": {
+              "width": 190,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "External LLM Provider"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 5,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "cf9fdb19-a86a-4ea3-a878-49a670d66f58"
+                },
+                {
+                  "group": "right",
+                  "id": "98a9c4e2-ce3a-4e44-9461-fd387893ce42"
+                },
+                {
+                  "group": "bottom",
+                  "id": "b9618260-d6d8-4a31-8975-67f072e0e109"
+                },
+                {
+                  "group": "left",
+                  "id": "5f47c4c1-6b9c-439f-a493-9a861b78550f"
+                }
+              ]
+            },
+            "id": "6e2f7907-b159-481c-ae9d-512b4066af62",
+            "data": {
+              "name": "External LLM Provider",
+              "description": "Third-party model inference service outside SecureNova's trust domain.",
+              "type": "tm.Actor",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 1100,
+              "y": 430
+            },
+            "size": {
+              "width": 200,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "RAG Retrieval Service"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 6,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "ef9ad1b4-c292-4915-aab2-9a1841df14bc"
+                },
+                {
+                  "group": "right",
+                  "id": "1e4d294d-5aa5-4f01-9bda-366066b43160"
+                },
+                {
+                  "group": "bottom",
+                  "id": "1a8c5bc4-f8ba-4053-a50d-752943b5668c"
+                },
+                {
+                  "group": "left",
+                  "id": "dc9db0ad-4d3a-470c-8bea-f399b4dd72ac"
+                }
+              ]
+            },
+            "id": "6b7b95d7-e280-4560-aec0-7ffdbd43f355",
+            "data": {
+              "name": "RAG Retrieval Service",
+              "description": "Retrieves approved knowledge chunks for model context.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 1450,
+              "y": 500
+            },
+            "size": {
+              "width": 190,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Vector Database"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 7,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "c64a20e0-d5bb-4344-ac15-1799a29d4369"
+                },
+                {
+                  "group": "right",
+                  "id": "a415c18b-5f3c-4bd2-8f78-232e4d93ca40"
+                },
+                {
+                  "group": "bottom",
+                  "id": "a28f7a97-daa4-46fc-a79a-e782ddb7b3b3"
+                },
+                {
+                  "group": "left",
+                  "id": "dbafaaf1-6019-41c4-94b1-4352e4d502aa"
+                }
+              ]
+            },
+            "id": "7f8efe5e-0ef9-4858-bffd-177f5627c0f5",
+            "data": {
+              "name": "Vector Database",
+              "description": "Stores embeddings and indexed knowledge chunks.",
+              "type": "tm.Store",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 1000,
+              "y": 610
+            },
+            "size": {
+              "width": 180,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "MCP Server"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 8,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "056b7d2a-6e01-4ddc-9e4e-a0ad9bb1e689"
+                },
+                {
+                  "group": "right",
+                  "id": "c1c6db25-f5be-4695-b4ba-5a7295e01f20"
+                },
+                {
+                  "group": "bottom",
+                  "id": "81c2ba3c-2379-4214-895f-6b6c9194346f"
+                },
+                {
+                  "group": "left",
+                  "id": "c41b2112-69d1-4a79-9573-fa6aaa404880"
+                }
+              ]
+            },
+            "id": "8e952d9c-2a0c-4dfb-bcf5-2b1f6f0e21da",
+            "data": {
+              "name": "MCP Server",
+              "description": "Exposes controlled tools to the AI agent.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false,
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 1250,
+              "y": 870
+            },
+            "size": {
+              "width": 200,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Internal Business API"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 9,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "65b3946c-a890-4b6d-b291-475d305b26ca"
+                },
+                {
+                  "group": "right",
+                  "id": "101a468b-9194-4363-871b-99486d911b55"
+                },
+                {
+                  "group": "bottom",
+                  "id": "efadd589-ee24-4e86-86ed-464fb5355de3"
+                },
+                {
+                  "group": "left",
+                  "id": "4660d99a-3358-4080-984a-2a6d74f07879"
+                }
+              ]
+            },
+            "id": "0b18457a-f53f-4d98-aa9d-5490cfd828ab",
+            "data": {
+              "name": "Internal Business API",
+              "description": "Enforces authorization for internal business operations.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 1690,
+              "y": 790
+            },
+            "size": {
+              "width": 190,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Customer Database"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "be41ba06-40e3-4424-9e89-52cf3fd75419"
+                },
+                {
+                  "group": "right",
+                  "id": "70fafabb-95a7-4ee2-834b-f97ba5cedab6"
+                },
+                {
+                  "group": "bottom",
+                  "id": "e92c4162-f480-4fcb-9ef2-2d2164481002"
+                },
+                {
+                  "group": "left",
+                  "id": "cd9ab3bb-38c7-442d-af9f-0cedd9ee02bc"
+                }
+              ]
+            },
+            "id": "13ee4982-4477-4583-b407-561703f472da",
+            "data": {
+              "name": "Customer Database",
+              "description": "Stores customer records.",
+              "type": "tm.Store",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 660,
+              "y": 400
+            },
+            "size": {
+              "width": 190,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Secrets Vault"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 11,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "edb6c1b6-a0de-41b2-a395-58fb37f138c2"
+                },
+                {
+                  "group": "right",
+                  "id": "685067df-6fd5-4f84-a9ce-6cd52137dc8b"
+                },
+                {
+                  "group": "bottom",
+                  "id": "df113c41-f6f3-400c-bb5b-2bb683f18665"
+                },
+                {
+                  "group": "left",
+                  "id": "de8ab4cc-ac25-4592-b7bf-f97f4af6b7f8"
+                }
+              ]
+            },
+            "id": "1c38e107-2cf7-476a-b747-f73020fa70ac",
+            "data": {
+              "name": "Secrets Vault",
+              "description": "Stores application, agent and provider credentials.",
+              "type": "tm.Store",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": false,
+              "storesCredentials": true,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 540,
+              "y": 740
+            },
+            "size": {
+              "width": 230,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Security Monitoring / SIEM"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 12,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "aee20e1f-5787-43f1-9940-a285dc22fd81"
+                },
+                {
+                  "group": "right",
+                  "id": "db8198c3-8fb4-46ec-bba4-e1467ff48241"
+                },
+                {
+                  "group": "bottom",
+                  "id": "24b547ae-3d97-4808-a7e0-46fed505ae21"
+                },
+                {
+                  "group": "left",
+                  "id": "7f0f3090-121b-4c04-a59e-e2b798146fb6"
+                }
+              ]
+            },
+            "id": "78201ca0-c421-4b9a-bb2e-d3f13b384193",
+            "data": {
+              "name": "Security Monitoring / SIEM",
+              "description": "Collects authentication, agent and tool audit events.",
+              "type": "tm.Process",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "isALog": true,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "providesAuthentication": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 20,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Login credentials",
+              "description": "Login credentials",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS / OIDC",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Login credentials",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "ec3c8a8e-7f26-4689-ab8e-d33801fe2bf9",
+            "source": {
+              "cell": "08d93d6b-b89f-42e0-ba9f-125c1269e9b1"
+            },
+            "target": {
+              "cell": "fce6c280-f656-4278-a0f1-ab98916300da"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 21,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "OIDC access token / JWT",
+              "description": "OIDC access token / JWT",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "OIDC access token / JWT",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "6f4cb22a-db3d-402f-a852-f2cc22600cdd",
+            "source": {
+              "cell": "fce6c280-f656-4278-a0f1-ab98916300da"
+            },
+            "target": {
+              "cell": "91100652-6092-48da-9ef2-1bc884eaa28f"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 22,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Chat request",
+              "description": "Chat request",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Chat request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "930e75a6-9144-4d29-888e-bf40db7466e7",
+            "source": {
+              "cell": "08d93d6b-b89f-42e0-ba9f-125c1269e9b1"
+            },
+            "target": {
+              "cell": "91100652-6092-48da-9ef2-1bc884eaa28f"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 23,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Validated agent request",
+              "description": "Validated agent request",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Internal authenticated API",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Validated agent request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "a8e689dd-2f11-4c66-8381-f982618163da",
+            "source": {
+              "cell": "91100652-6092-48da-9ef2-1bc884eaa28f"
+            },
+            "target": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 24,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Prompt / inference request",
+              "description": "Prompt / inference request",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS / TLS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Prompt / inference request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "d62b3194-3982-4e54-976e-ba7d28a7cdb6",
+            "source": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            },
+            "target": {
+              "cell": "6e2f7907-b159-481c-ae9d-512b4066af62"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 25,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Model response",
+              "description": "Model response",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS / TLS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Model response",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "f69f10e4-008e-4766-b7e5-0ff15b2d75ae",
+            "source": {
+              "cell": "6e2f7907-b159-481c-ae9d-512b4066af62"
+            },
+            "target": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            },
+            "vertices": [
+              {
+                "x": 1370,
+                "y": 220
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 26,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Retrieval query",
+              "description": "Retrieval query",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Internal API",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Retrieval query",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "88df299c-9e6e-4808-8112-3b9d311d1b20",
+            "source": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            },
+            "target": {
+              "cell": "6b7b95d7-e280-4560-aec0-7ffdbd43f355"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 27,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Vector search",
+              "description": "Vector search",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Vector search",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "16ea2119-7d6b-42f0-b6ab-ef2942266ad1",
+            "source": {
+              "cell": "6b7b95d7-e280-4560-aec0-7ffdbd43f355"
+            },
+            "target": {
+              "cell": "7f8efe5e-0ef9-4858-bffd-177f5627c0f5"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 28,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Retrieved chunks",
+              "description": "Retrieved chunks",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "TLS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Retrieved chunks",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "7957e4cb-3cdb-4980-a322-023604b9b74d",
+            "source": {
+              "cell": "7f8efe5e-0ef9-4858-bffd-177f5627c0f5"
+            },
+            "target": {
+              "cell": "6b7b95d7-e280-4560-aec0-7ffdbd43f355"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 29,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Retrieved context",
+              "description": "Retrieved context",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Internal API",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Retrieved context",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "a0bf69c8-f3c9-4815-b911-654bdb923371",
+            "source": {
+              "cell": "6b7b95d7-e280-4560-aec0-7ffdbd43f355"
+            },
+            "target": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            },
+            "vertices": [
+              {
+                "x": 1230,
+                "y": 330
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 30,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Tool invocation",
+              "description": "Tool invocation",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "MCP / authenticated",
+              "threats": [
+                {
+                  "id": "aa002e0e-defb-40ad-aa78-16ce593e524f",
+                  "title": "Tool Invocation Parameter Tampering",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "An attacker may modify the parameters of a tool invocation between the AI Agent and MCP Server. For example, an attacker may change the customer ID in an account-balance request to access another customer's information or trigger an unintended operation.",
+                  "mitigation": "Validate all tool invocation parameters, enforce server-side authorization, reject unexpected input, and verify the integrity of sensitive requests.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": "16"
+                },
+                {
+                  "id": "160b0af1-c57b-4186-ad56-539b2857534b",
+                  "title": "MCP Server Denial of Service",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "An attacker may send an excessive number of tool invocation requests to the MCP Server, consuming system resources and preventing legitimate AI agent requests from being processed.",
+                  "mitigation": "Implement rate limiting, request quotas, request timeouts, resource monitoring and traffic filtering to maintain service availability.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": "12"
+                },
+                {
+                  "id": "f85ca6d5-4e5c-4300-8c3f-e9299c0df0d0",
+                  "title": "Sensitive Customer Information Disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "The MCP Server may expose sensitive customer information to the AI Agent through tool responses. Excessive data returned by the tool may result in unauthorized disclosure of personal or financial information.",
+                  "mitigation": "Apply least-privilege access, return only the information required by the requested operation, enforce authorization checks, and encrypt sensitive information during transmission.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": "15"
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "Tool invocation"
+            ],
+            "id": "5180b194-800f-4c4a-8424-ac1dbed76dd2",
+            "source": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            },
+            "target": {
+              "cell": "8e952d9c-2a0c-4dfb-bcf5-2b1f6f0e21da"
+            },
+            "vertices": [
+              {
+                "x": 1100,
+                "y": 530
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 31,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Authenticated API request",
+              "description": "Authenticated API request",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS / OAuth",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Authenticated API request",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "b5bce38f-c584-49ef-b9f8-18c34d0a733e",
+            "source": {
+              "cell": "8e952d9c-2a0c-4dfb-bcf5-2b1f6f0e21da"
+            },
+            "target": {
+              "cell": "0b18457a-f53f-4d98-aa9d-5490cfd828ab"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 32,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Customer data query",
+              "description": "Customer data query",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "SQL / TLS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Customer data query",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "063368b3-8815-4a80-a536-85a160e2cfa5",
+            "source": {
+              "cell": "0b18457a-f53f-4d98-aa9d-5490cfd828ab"
+            },
+            "target": {
+              "cell": "13ee4982-4477-4583-b407-561703f472da"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 33,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Agent credentials",
+              "description": "Agent credentials",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Vault API",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Agent credentials",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "90c26e4d-2546-49c7-b04f-5b07fa87014e",
+            "source": {
+              "cell": "1c38e107-2cf7-476a-b747-f73020fa70ac"
+            },
+            "target": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 34,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Application credentials",
+              "description": "Application credentials",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Vault API",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Application credentials",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "a0d2f27e-166c-468e-aacb-43d890df6279",
+            "source": {
+              "cell": "1c38e107-2cf7-476a-b747-f73020fa70ac"
+            },
+            "target": {
+              "cell": "91100652-6092-48da-9ef2-1bc884eaa28f"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 35,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Security events",
+              "description": "Security events",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Audit stream",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Security events",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "dcc433c4-b6dc-4015-a4fc-2cc436e11a9c",
+            "source": {
+              "cell": "91100652-6092-48da-9ef2-1bc884eaa28f"
+            },
+            "target": {
+              "cell": "78201ca0-c421-4b9a-bb2e-d3f13b384193"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 36,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Agent activity logs",
+              "description": "Agent activity logs",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Audit stream",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Agent activity logs",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "6d65d0ca-966a-4f4a-b95f-207987e920d9",
+            "source": {
+              "cell": "16f72667-64f6-4680-8b03-3c0420c31e9d"
+            },
+            "target": {
+              "cell": "78201ca0-c421-4b9a-bb2e-d3f13b384193"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 37,
+            "connector": "normal",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Tool execution logs",
+              "description": "Tool execution logs",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Audit stream",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Data Flow"
+                  },
+                  "labelText": {
+                    "text": "Tool execution logs",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": 0.5
+              }
+            ],
+            "id": "ebf5c726-e28c-4de6-a2c7-277bf632f5bd",
+            "source": {
+              "cell": "8e952d9c-2a0c-4dfb-bcf5-2b1f6f0e21da"
+            },
+            "target": {
+              "cell": "78201ca0-c421-4b9a-bb2e-d3f13b384193"
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "attrs": {
+              "line": {
+                "targetMarker": "",
+                "sourceMarker": ""
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 50,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "TB1 — Public / Identity Edge",
+              "description": "TB1 — Public / Identity Edge",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Trust Boundary"
+                  },
+                  "labelText": {
+                    "text": "TB1 — Public / Identity Edge",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  },
+                  "text": {
+                    "text": "TB1 — Public / Identity Edge"
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "id": "da4475e7-c7c0-4127-8bb6-1cb0399d98a2",
+            "source": {
+              "x": 285,
+              "y": 115
+            },
+            "target": {
+              "x": 285,
+              "y": 865
+            },
+            "vertices": [
+              {
+                "x": 320,
+                "y": 300
+              },
+              {
+                "x": 255,
+                "y": 520
+              },
+              {
+                "x": 320,
+                "y": 700
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "attrs": {
+              "line": {
+                "targetMarker": "",
+                "sourceMarker": ""
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 51,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "TB2 — SecureNova AI Services",
+              "description": "TB2 — SecureNova AI Services",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Trust Boundary"
+                  },
+                  "labelText": {
+                    "text": "TB2 — SecureNova AI Services",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  },
+                  "text": {
+                    "text": "TB2 — SecureNova AI Services"
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "id": "3ecfa383-2678-4eb1-8b56-830e5d196f4f",
+            "source": {
+              "x": 930,
+              "y": 115
+            },
+            "target": {
+              "x": 930,
+              "y": 1060
+            },
+            "vertices": [
+              {
+                "x": 965,
+                "y": 340
+              },
+              {
+                "x": 965,
+                "y": 470
+              },
+              {
+                "x": 900,
+                "y": 590
+              },
+              {
+                "x": 965,
+                "y": 830
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "attrs": {
+              "line": {
+                "targetMarker": "",
+                "sourceMarker": ""
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 52,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "TB3 — External LLM / Protected Data",
+              "description": "TB3 — External LLM / Protected Data",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "Trust Boundary"
+                  },
+                  "labelText": {
+                    "text": "TB3 — External LLM / Protected Data",
+                    "textAnchor": "middle",
+                    "textVerticalAnchor": "middle"
+                  },
+                  "labelBody": {
+                    "ref": "labelText",
+                    "refRx": "50%",
+                    "refRy": "60%",
+                    "fill": "#fff",
+                    "strokeWidth": 0
+                  },
+                  "text": {
+                    "text": "TB3 — External LLM / Protected Data"
+                  }
+                },
+                "markup": [
+                  {
+                    "tagName": "ellipse",
+                    "selector": "labelBody"
+                  },
+                  {
+                    "tagName": "text",
+                    "selector": "labelText"
+                  }
+                ],
+                "position": {
+                  "distance": 0.5,
+                  "args": {
+                    "keepGradient": true,
+                    "ensureLegibility": true
+                  }
+                }
+              }
+            ],
+            "id": "2ec45ef7-6fdb-4ebd-80ba-b71a6cd41a89",
+            "source": {
+              "x": 1400,
+              "y": 115
+            },
+            "target": {
+              "x": 1400,
+              "y": 1060
+            },
+            "vertices": [
+              {
+                "x": 1435,
+                "y": 340
+              },
+              {
+                "x": 1370,
+                "y": 590
+              },
+              {
+                "x": 1435,
+                "y": 830
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": 55,
+              "y": 35
+            },
+            "size": {
+              "width": 900,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "SecureNova AI Identity Security\nData Flow Diagram — Proposed Architecture"
+              }
+            },
+            "visible": true,
+            "shape": "td-text-block",
+            "zIndex": 100,
+            "id": "2466e8d8-452f-4a27-97ce-095e73c0aa94",
+            "data": {
+              "type": "tm.Text",
+              "name": "SecureNova AI Identity Security Data Flow Diagram",
+              "hasOpenThreats": false
+            }
+          }
+        ],
+        "version": "2.6.2",
+        "title": "SecureNova AI Identity Security — Proposed Architecture",
+        "description": "Proposed logical architecture showing identity, AI orchestration, RAG, MCP tool access, protected business data, secrets, and security monitoring.",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "diagramType": "STRIDE",
+        "id": 0
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 12
+  },
+  "version": "2.6.2"
+}

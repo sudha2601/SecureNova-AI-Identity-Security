@@ -1,0 +1,8 @@
+define flow check_input:
+  $blocked = execute detect_prompt_injection(text=$user_message)
+  if $blocked
+    bot say "BLOCKED: Suspicious prompt injection detected."
+    stop
+
+define flow check_output:
+  $bot_message = execute redact_jwt_output(text=$bot_message)
